@@ -28,7 +28,8 @@ const PORT = process.env.PORT || 4007;
 // );
 
 app.set("view engine", "ejs");
-app.set("views", path.join(path.resolve(), "views"));
+// app.set("views", path.join(path.resolve(), "views"));
+app.set("views", "./views");
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 // app.use(express.static(path.resolve("./public")));
