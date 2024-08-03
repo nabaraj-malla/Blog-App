@@ -1,0 +1,10 @@
+.bg-dark {
+    background-color: red ;
+}
+/* .navbar-brand {
+    padding: 40px;
+} */
+
+.navbar-brand .container-fluid .customBlogify {
+    padding: 40px;
+} 
