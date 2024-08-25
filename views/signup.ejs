@@ -14,6 +14,7 @@
             type="text"
             id="fullName"
             name="fullName"
+            placeholder="iamuser"
             class="form-control"
           />
         </div>
@@ -24,10 +25,11 @@
             id="email"
             name="email"
             class="form-control"
+            placeholder="example@user.com"
             aria-describedby="emailHelp"
           />
           <div id="emailHelp" class="form-text">
-            We'll never share your email with anyone else.
+            email must end with @user.com
           </div>
         </div>
         <div class="mb-3">
@@ -36,8 +38,13 @@
             type="password"
             id="password"
             name="password"
+            placeholder="User1*1abc"
             class="form-control"
           />
+          <div id="passwordHelp" class="form-text">
+            password must contain atleast one lowercase, uppercase, digit,
+            special charater and minimum length of 8
+          </div>
         </div>
         <div class="mb-3">
           <label for="uploadImage" class="form-label">Fullname </label>

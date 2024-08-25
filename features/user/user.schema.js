@@ -10,11 +10,19 @@ const userSchema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
+      match: [
+        /([a-zA-Z0-9_\-]+)@user\.([a-zA-Z0-9]{3,5})/,
+        "Enter valid email address",
+      ],
       unique: true,
     },
     password: {
       type: String,
       required: true,
+      match: [
+        /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\W_])[\S]{8,}/,
+        "password validation failed",
+      ],
     },
     profileImageURL: {
       type: String,

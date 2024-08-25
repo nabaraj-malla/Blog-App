@@ -31,7 +31,7 @@ app.set("view engine", "ejs");
 // app.set("views", path.join(path.resolve(), "views"));
 app.set("views", "./views");
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static("public"));
+app.use(express.static("./public"));
 // app.use(express.static(path.resolve("./public")));
 app.use(cookieParser());
 app.use(checkAuthentication("token"));
@@ -64,19 +64,22 @@ app.get("/", async (req, res) => {
 app.use("/user", userRouter);
 app.use("/blog", blogRouter);
 app.use("/comment", commentRouter);
-// app.get("/demo", (req, res) => {
-//   res.render("./partials/demo");
-// });
 
-// const MONGO_URL = "mongodb://localhost:27017/blog-site";
-// let MONGO_URL;
+app.use((err, req, res, next) => {
+  console.log(err);
+  if (err instanceof mongoose.Error.ValidationError) {
+    return res.status(400).send(err.message);
+  }
+  // if (err instanceof ApplicationError) {
+  //   res.status(err.code).send(err.message);
+  // }
+  else {
+    // logError(req.url, err);
+    res.status(500).send("Something went wrong");
+  }
+});
+
 app.listen(PORT, async () => {
   console.log(`Server is listening at port no. ${PORT}`);
-  //   connectMongoDB(process.env.MONGO_URL);
-  try {
-    await mongoose.connect(process.env.MONGO_URL);
-    console.log("connected to mongodb");
-  } catch (error) {
-    console.log("error in connecting mongodb");
-  }
+  connectMongoDB(process.env.MONGO_URL);
 });

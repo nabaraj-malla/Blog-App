@@ -2,6 +2,7 @@ import { UserModel } from "./user.schema.js";
 import { getToken } from "../../middlewares/jwt.middleware.js";
 import { verifyToken } from "../../middlewares/jwt.middleware.js";
 import bcrypt from "bcrypt";
+import mongoose from "mongoose";
 
 class UserController {
   async renderSignin(req, res) {
@@ -12,20 +13,29 @@ class UserController {
     return res.render("signup");
   }
 
-  async signup(req, res) {
-    const { fullName, email, password } = req.body;
-    console.log("req.file", req.file);
-    let { filename } = req.file;
-    console.log("profileImageURL", filename);
-    const profileImageURL = "/images/" + filename;
-    const newUser = new UserModel({
-      fullName,
-      email,
-      password,
-      profileImageURL,
-    });
-    await newUser.save();
-    return res.redirect("/");
+  async signup(req, res, next) {
+    try {
+      const { fullName, email, password } = req.body;
+      console.log("req.file", req.file);
+      let { filename } = req.file;
+      console.log("profileImageURL", filename);
+      const profileImageURL = "/images/" + filename;
+      const newUser = new UserModel({
+        fullName,
+        email,
+        password,
+        profileImageURL,
+      });
+      await newUser.save();
+      return res.redirect("/");
+    } catch (err) {
+      if (err instanceof mongoose.Error.ValidationError) {
+        // return res.redirect("/user/signup");
+        // throw err;
+        next(err);
+      }
+      console.log(err);
+    }
   }
 
   async signin(req, res) {
