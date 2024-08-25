@@ -19,10 +19,10 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
-      match: [
-        /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\W_])[\S]{8,}/,
-        "password validation failed",
-      ],
+      // match: [
+      //   /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\W_])[\S]{8,}/,
+      //   "password validation failed",
+      // ],
     },
     profileImageURL: {
       type: String,
