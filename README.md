@@ -16,6 +16,7 @@ This is a dynamic blogging platform where logged-in users can explore, read exis
 
 # Installation
 - Clone the repository
+  ```bash
   git clone ....
 - Install dependencies
   npm install
