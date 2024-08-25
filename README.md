@@ -30,6 +30,6 @@ This is a dynamic blogging platform where logged-in users can explore, read exis
   npm run dev || node app.js
 
   # Try out Deployed URL
-  * https://blog-app-jtwg.onrender.com
+  https://blog-app-jtwg.onrender.com
   
   
