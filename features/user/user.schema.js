@@ -18,6 +18,7 @@ const userSchema = new mongoose.Schema(
     },
     password: {
       type: String,
+      minLength: [8, "minimum 8 characters is required"],
       required: true,
       // match: [
       //   /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\W_])[\S]{8,}/,
@@ -26,7 +27,8 @@ const userSchema = new mongoose.Schema(
     },
     profileImageURL: {
       type: String,
-      default: "/images/defaultProfile.jpg",
+      required: [true, "profile image is required"],
+      // default: "/images/defaultProfile.jpg",
     },
     role: {
       type: String,
