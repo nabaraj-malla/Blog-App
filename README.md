@@ -19,11 +19,14 @@ This is a dynamic blogging platform where logged-in users can explore, read exis
   ```bash
   git clone ....
 - Install dependencies
+  ```bash
   npm install
 - Set up environment variables: Create a .env file and add the following variables:
+  ```bash
   PORT: some port no.
   DATABASE_URL= mongodb://your_database_uri
 - Start the development server
+  ```bash
   npm run dev || node app.js
 
   # Try out Deployed URL
