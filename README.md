@@ -31,5 +31,7 @@ This is a dynamic blogging platform where logged-in users can explore, read exis
   
 # Try out Deployed URL
   https://blog-app-jtwg.onrender.com
+> [!NOTE]
+> I have used free instance of render for deployment, which can delay requests by 50 seconds or more.
   
   
